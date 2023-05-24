@@ -107,7 +107,7 @@ phases:
             -D dynamodb_table=$TF_DDB_TABLE \
             -D kms_key_id=$TF_KMS_KEY_ID \
             -D newrelic_account_id=$NEW_RELIC_ACCOUNT_ID \
-            -D newrelic_account_region=$NEW_RELIC_ACCOUNT_REGION \
+            -D newrelic_account_region=$NEW_RELIC_REGION \
             -D vended_account_id=$VENDED_ACCOUNT_ID \
             >> ./$(basename $f .jinja).tf; 
             done
