@@ -383,7 +383,7 @@ resource "aws_ssm_parameter" "aft_metrics_reporting_uuid" {
 
 resource "aws_ssm_parameter" "newrelic_api_key" {
   name  = "/aft/integrations/newrelic/api_key"
-  type  = "String"
+  type  = "SecureString"
   value = var.newrelic_api_key
 }
 
