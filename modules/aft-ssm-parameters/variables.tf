@@ -249,3 +249,16 @@ variable "aft_version" {
 variable "aft_metrics_reporting" {
   type = string
 }
+
+# NewRelic
+variable "newrelic_api_key" {
+  type = string
+}
+
+variable "newrelic_region" {
+  type = string
+}
+
+variable "newrelic_account_id" {
+  type = string
+}

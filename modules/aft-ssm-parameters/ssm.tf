@@ -378,3 +378,23 @@ resource "aws_ssm_parameter" "aft_metrics_reporting_uuid" {
   value = random_uuid.metrics_reporting_uuid.result
   type  = "String"
 }
+
+## NewRelic
+
+resource "aws_ssm_parameter" "newrelic_api_key" {
+  name  = "/aft/integrations/newrelic/api_key"
+  type  = "String"
+  value = var.newrelic_api_key
+}
+
+resource "aws_ssm_parameter" "newrelic_region" {
+  name  = "/aft/integrations/newrelic/region"
+  type  = "String"
+  value = var.newrelic_region
+}
+
+resource "aws_ssm_parameter" "newrelic_account_id" {
+  name  = "/aft/integrations/newrelic/account_id"
+  type  = "String"
+  value = var.newrelic_account_id
+}

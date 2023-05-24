@@ -256,4 +256,9 @@ module "aft_ssm_parameters" {
   maximum_concurrent_customizations                           = var.maximum_concurrent_customizations
   github_enterprise_url                                       = var.github_enterprise_url
   aft_metrics_reporting                                       = var.aft_metrics_reporting
+
+  # NewRelic
+  newrelic_api_key = var.newrelic_api_key
+  newrelic_region = var.newrelic_region
+  newrelic_account_id = var.newrelic_account_id
 }
