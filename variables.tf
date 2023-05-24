@@ -387,3 +387,18 @@ variable "aft_metrics_reporting" {
     error_message = "Valid values for var: aft_metrics_reporting are (true, false)."
   }
 }
+
+#########################################
+# New Relic
+#########################################
+variable "newrelic_api_key" {
+  type = string
+}
+
+variable "newrelic_region" {
+  type = string
+}
+
+variable "newrelic_account_id" {
+  type = string
+}
