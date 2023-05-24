@@ -75,7 +75,7 @@ phases:
       - source $DEFAULT_PATH/aft-venv/bin/activate
       - NEW_RELIC_API_KEY=$(aws ssm get-parameter --name /aft/integrations/newrelic/api_key | jq --raw-output ".Parameter.Value")
       - NEW_RELIC_REGION=$(aws ssm get-parameter --name /aft/integrations/newrelic/region | jq --raw-output ".Parameter.Value")
-      - NEW_RELIC_ACCOUNT_ID=$(aws ssm get-parameter --name /aft/integrations/newrelic/newrelic_account_id | jq --raw-output ".Parameter.Value")
+      - NEW_RELIC_ACCOUNT_ID=$(aws ssm get-parameter --name /aft/integrations/newrelic/account_id | jq --raw-output ".Parameter.Value")
       - |
         if [ $TF_DISTRIBUTION = "oss" ]; then
           TF_BACKEND_REGION=$(aws ssm get-parameter --name "/aft/config/oss-backend/primary-region" --query "Parameter.Value" --output text)
@@ -107,8 +107,8 @@ phases:
             -D dynamodb_table=$TF_DDB_TABLE \
             -D kms_key_id=$TF_KMS_KEY_ID \
             -D newrelic_account_id=$NEW_RELIC_ACCOUNT_ID \
-            -D newrelic_account_region=$NEW_RELIC_ACCOUNT_REGION \
-            -D vended_account_id=VENDED_ACCOUNT_ID \
+            -D newrelic_account_region=$NEW_RELIC_REGION \
+            -D vended_account_id=$VENDED_ACCOUNT_ID \
             >> ./$(basename $f .jinja).tf; 
             done
           for f in *.tf; do echo "\n \n"; echo $f; cat $f; done
