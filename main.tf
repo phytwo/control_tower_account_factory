@@ -258,7 +258,7 @@ module "aft_ssm_parameters" {
   aft_metrics_reporting                                       = var.aft_metrics_reporting
 
   # NewRelic
-  newrelic_api_key = var.newrelic_api_key
-  newrelic_region = var.newrelic_region
+  newrelic_api_key    = var.newrelic_api_key
+  newrelic_region     = var.newrelic_region
   newrelic_account_id = var.newrelic_account_id
 }
