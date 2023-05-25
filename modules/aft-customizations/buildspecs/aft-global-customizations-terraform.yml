@@ -19,6 +19,9 @@ phases:
       - AFT_ADMIN_ROLE_NAME=$(aws ssm get-parameter --name /aft/resources/iam/aft-administrator-role-name | jq --raw-output ".Parameter.Value")
       - AFT_ADMIN_ROLE_ARN=arn:$AWS_PARTITION:iam::$AFT_MGMT_ACCOUNT:role/$AFT_ADMIN_ROLE_NAME
       - ROLE_SESSION_NAME=$(aws ssm get-parameter --name /aft/resources/iam/aft-session-name | jq --raw-output ".Parameter.Value")
+      - NEW_RELIC_API_KEY=$(aws ssm get-parameter --name /aft/integrations/newrelic/api_key | jq --raw-output ".Parameter.Value")
+      - NEW_RELIC_REGION=$(aws ssm get-parameter --name /aft/integrations/newrelic/region | jq --raw-output ".Parameter.Value")
+      - NEW_RELIC_ACCOUNT_ID=$(aws ssm get-parameter --name /aft/integrations/newrelic/account_id | jq --raw-output ".Parameter.Value")
 
       # Configure Development SSH Key
       - |
@@ -73,10 +76,6 @@ phases:
     commands:
       # Apply customizations
       - source $DEFAULT_PATH/aft-venv/bin/activate
-      - |
-        export NEW_RELIC_API_KEY=$(aws ssm get-parameter --name /aft/integrations/newrelic/api_key | jq --raw-output ".Parameter.Value")
-        export NEW_RELIC_REGION=$(aws ssm get-parameter --name /aft/integrations/newrelic/region | jq --raw-output ".Parameter.Value")
-        export NEW_RELIC_ACCOUNT_ID=$(aws ssm get-parameter --name /aft/integrations/newrelic/account_id | jq --raw-output ".Parameter.Value")
       - |
         if [ $TF_DISTRIBUTION = "oss" ]; then
           TF_BACKEND_REGION=$(aws ssm get-parameter --name "/aft/config/oss-backend/primary-region" --query "Parameter.Value" --output text)
