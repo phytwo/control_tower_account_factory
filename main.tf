@@ -100,7 +100,7 @@ module "aft_customizations" {
   providers = {
     aws = aws.aft_management
   }
-  source                                            = "git@github.com:phytwo/aft-customizations.git"
+  source                                            = "git@github.com:phytwo/aft-customizations.git?ref=new-relic-integration"
   aft_tf_aws_customizations_module_git_ref_ssm_path = local.ssm_paths.aft_tf_aws_customizations_module_git_ref_ssm_path
   aft_tf_aws_customizations_module_url_ssm_path     = local.ssm_paths.aft_tf_aws_customizations_module_url_ssm_path
   aft_tf_backend_region_ssm_path                    = local.ssm_paths.aft_tf_backend_region_ssm_path
